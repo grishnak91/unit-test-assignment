@@ -13,15 +13,20 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 class TestDemoTest {
+	
+	//TestDemo instantiated for every test
 	private TestDemo testDemo;
 
 	@BeforeEach
+	
 	void setUp() throws Exception {
 		testDemo = new TestDemo();
 	}
 
 	@ParameterizedTest
 	@MethodSource("TestDemoTest#argumentsForAddPositive")
+	
+	//checks to make sure int a and int b are added correctly
 	void assertThatTwoPositiveNumbersAreAddedCorrectly(int a, int b, int expected, boolean expectException) {
 		
 		if(!expectException) {
@@ -44,6 +49,8 @@ class TestDemoTest {
 			);	
 	}
 	@Test
+	
+	//checks to make sure method is squaring correctly
 	void assertThatNumberSquaredIsCorrect() {
 	TestDemo mockDemo = spy(testDemo);
 	doReturn(5).when(mockDemo).getRandomInt();
